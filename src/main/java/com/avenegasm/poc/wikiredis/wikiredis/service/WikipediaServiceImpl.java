@@ -25,10 +25,10 @@ public class WikipediaServiceImpl implements WikipediaService {
 
     @Cacheable(value = "wikiSearch", key = "#search")
     @Override
-    public WikipediaOkResponse realizarBusqueda(String search){
-        logger.info("Realizando busqueda en wikipedia ...");
-        String urlGenerada = MessageFormat.format(url,search);
-        logger.info("Url generada :{}",urlGenerada);
+    public WikipediaOkResponse realizarBusqueda(String search) {
+        logger.info("Realizando búsqueda en wikipedia ...");
+        String urlGenerada = MessageFormat.format(url, search);
+        logger.info("Url generada :{}", urlGenerada);
         WikipediaOkResponse pageSearch = Feign.builder()
                 .client(new OkHttpClient())
                 .encoder(new GsonEncoder())
@@ -36,7 +36,7 @@ public class WikipediaServiceImpl implements WikipediaService {
                 .logger(new Slf4jLogger(WikipediaClient.class))
                 .logLevel(feign.Logger.Level.FULL)
                 .target(WikipediaClient.class, urlGenerada).pageSearch();
-        logger.info("Buqueda realizada con exito, guardada en cache.");
+        logger.info("Búsqueda realizada con éxito, guardada en cache.");
         return pageSearch;
     }
 }

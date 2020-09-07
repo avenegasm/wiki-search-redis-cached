@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 @Data
 public class ErrorDto implements Serializable {
-     String code;
-     String info;
-     String docref;
+    String code;
+    String info;
+    String docref;
 }
